@@ -1,6 +1,3 @@
-% when the hierarchy structure needs to grow, train the new deeper layer
-% with Pm.k new neurons.
-
 function [Node,CorSet,NumNode] = TrainNodes(SubData,DataLct,Pm)
 %% preprocessing
 [SubXlth,~]=size(SubData);
@@ -10,31 +7,6 @@ else
     NumNode=ceil(SubXlth/Pm.UpLimit);
 end
 % Node=zeros(NumNode,Pm.Xwd);
-
-% RandomSize=Pm.UpLimit/2;
-% for i=1:NumNode
-%     NodeOri=SubData(randperm(SubXlth,RandomSize),:);
-%     Node(i,:)=mean(NodeOri);
-% end
-%[~,Node]=kmeans(SubData,NumNode);
-% Node=SubData(randperm(SubXlth,NumNode),:);
-% for i=1:10
-%     MidNode=SubData(randperm(SubXlth,NumNode),:);
-%     for j=1:NumNode
-%         [~,Winner]=min(dist(MidNode(j,:),Node'));
-%         Node(Winner,:)=(Node(Winner,:)*(i-1)+MidNode(j,:))/i;
-%     end
-% end
-
-% NumSib=length(NodeParentSib(:,1));
-% if NumSib ==4 && isempty(NodeGrandParent)==0
-%     Node(1,:)=2*NodeGrandParent-NodeParent;
-%     for i=1:NumNode
-%         Node(i,:)=(2*NodeGrandParent-NodeParentSib(i,:)+Node(1,:))/2;
-%     end
-% else
-%     Node=SubData(randperm(SubXlth,NumNode),:);
-% end
 
 %Node=SubData(1:NumNode,:);
 Node=SubData(randperm(SubXlth,NumNode),:);
