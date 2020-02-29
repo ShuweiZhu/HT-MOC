@@ -152,9 +152,6 @@ while Converge==0
 end
 
 figure(4) % Draw the result of nodes in different layers
-% n=size(X,1);
-% n2=randperm(n,fix(0.1*n));
-% plot(X(n2,1),X(n2,2),'.');
 plot(X(:,1),X(:,2),'.');
 hold on
 plot(LeafNodes(:,1),LeafNodes(:,2),'ro','MarkerFaceColor','r','MarkerSize',6);
@@ -169,11 +166,9 @@ for t=1:NumNode
     aa=sum(Subset(t,:));
     if aa>1*Pm.UpLimit
         time2=time2+1;
-%         aa
     end
 end
 
-% Core=ComputeCore(X,NumNode,Subset,Pm.UpLimit); % Detect core points and border points
 local_core=zeros(n,1);
 for i = 1:n
     local_core(i,1)=find(Subset(:,i)==1);
@@ -218,13 +213,5 @@ for j=2:length(Node)
         end
     end
 end
-
-%%% Find the number of leaf nodes in different layers
-% UniLeafLayer=unique(LeafLayer);
-% nLayer=length(UniLeafLayer);
-% NumLeafLayer=zeros(nLayer,1);
-% for i=1:nLayer
-%       NumLeafLayer(i,1)=length(find(LeafLayer==UniLeafLayer(i)));
-% end
 
 end
