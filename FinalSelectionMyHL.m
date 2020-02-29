@@ -1,11 +1,9 @@
-%% 1.Result of NSGA2 %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 clc
 clear
 
 cd(fileparts(mfilename('fullpath')));
 addpath(genpath(cd));
-eta=0.75;
+eta=0.8;
 
 for DD=6
     %% 1.1.Load dataset
@@ -16,13 +14,13 @@ for DD=6
     %% 1.2.Analyze the result of each time
     Evaluation_name=['Evaluation7.7\' DataName '_' num2str(eta) '.txt'];
     delete(Evaluation_name);
-    tt=5;
+    tt=10;
     Evaluation=zeros(tt,3);
     for time=1:tt
         disp([DataName '_iter1']);
         Clust_name=['Result6.28\Clust_' DataName '_' num2str(eta) '_iter' num2str(time) '.mat'];
         load(Clust_name,'Fit','Lab','Lab_all','overallTime');
-        %% ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª Ensemble solutions ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª %%
+        %% Â¡ÂªÂ¡ÂªÂ¡ÂªÂ¡ÂªÂ¡ÂªÂ¡ÂªÂ¡ÂªÂ¡ÂªÂ¡Âª Ensemble solutions Â¡ÂªÂ¡ÂªÂ¡ÂªÂ¡ÂªÂ¡ÂªÂ¡ÂªÂ¡ÂªÂ¡ÂªÂ¡Âª %%
         %%% Get all clusters in the ensemble
         N=size(Lab,1);
         Clust=Lab(randperm(N,fix(0.5*N)),:);
@@ -42,7 +40,6 @@ for DD=6
         [RandIndx,AdjRandIndx] = RandIndices(A,B);
         NMI=nmi(trueclus,fc);
         ACC=accuracy(trueclus,fc)/100;
-        % [ ~,~,~,nmiscore,accurateScore,~,~,~,Fmeasure,adjrand] = evaluate(trueclus,Lab);
         Evaluation(time,:)=[AdjRandIndx,NMI,ACC];
         dlmwrite(Evaluation_name,[AdjRandIndx,NMI,ACC],'-append');
     end
