@@ -1,19 +1,3 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                                                                   %
-% This is a demo for the LWEA and LWGP algorithms. If you find this %
-% code useful for your research, please cite the paper below.       %
-%                                                                   %
-% Dong Huang, Chang-Dong Wang, and Jian-Huang Lai.                  %
-% "Locally weighted ensemble clustering."                           %
-% IEEE Transactions on Cybernetics, to appear, 2017.                %
-%                                                                   %
-% The code has been tested in Matlab R2014a and Matlab R2015a on a  %
-% workstation with Windows Server 2008 R2 64-bit.                   %
-%                                                                   %
-% https://www.researchgate.net/publication/316681928                %
-%                                                                   %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 function allScores = computeNMI(cluster_labels,true_labels)
 
 allScores = zeros(size(cluster_labels,2),1);
